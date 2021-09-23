@@ -5,7 +5,7 @@ import SchoolForm from "./SchoolForm";
 import useStyles from "./useStyles";
 import Nav from "../../components/Nav/Nav";
 
-import { Typography } from "@mui/material";
+import { Typography, Alert, Stack } from "@mui/material";
 
 const CreateSchool = () => {
   const classes = useStyles();
@@ -17,6 +17,8 @@ const CreateSchool = () => {
   const [location, setLocation] = useState("");
   const [admission, setAdmission] = useState("");
   const [imageKey, setImageKey] = useState("");
+
+  const [alert, setAlert] = useState(false);
 
   const postImage = async () => {
     const formData = new FormData();
@@ -48,9 +50,23 @@ const CreateSchool = () => {
   };
 
   const handleSubmit = (e) => {
-    postImage();
-    createSchool();
-    history.push("/");
+    if (
+      name === "" ||
+      about === "" ||
+      location === "" ||
+      admission === "" ||
+      imageKey === ""
+    ) {
+      e.preventDefault();
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 3000);
+    } else {
+      postImage();
+      createSchool();
+      history.push("/");
+    }
   };
   const props = {
     setImage,
@@ -70,6 +86,26 @@ const CreateSchool = () => {
           Add a School
         </Typography>
         <SchoolForm {...props} />
+        {alert ? (
+          <Stack
+            style={{ position: "relative", top: "-80px" }}
+            sx={{
+              direction: "column",
+              width: "100%",
+              alignItems: "flex-end",
+              justifyContent: "flex-end",
+              bottom: "5vh",
+            }}
+            spacing={2}
+          >
+            <Alert severity="warning">
+              Please provide school informations to all fields
+            </Alert>
+            ;
+          </Stack>
+        ) : (
+          <div></div>
+        )}
       </div>
     </>
   );
