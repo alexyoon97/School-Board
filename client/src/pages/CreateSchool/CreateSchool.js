@@ -47,12 +47,10 @@ const CreateSchool = () => {
       }));
   };
 
-  const handleSubmit = async (e) => {
-    await postImage();
-    if (image) {
-      createSchool();
-      history.push("/");
-    }
+  const handleSubmit = (e) => {
+    postImage();
+    createSchool();
+    history.push("/");
   };
   const props = {
     setImage,
