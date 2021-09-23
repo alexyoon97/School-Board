@@ -14,20 +14,22 @@ const useStyles = makeStyles({
         flexDirection:'row',
         '& img':{
             height:'100%',
-            width:'50vh'
-        }
+            width:'500px'
+        },
     },
     school_img:{
         display:'flex',
-        flexDirection:'column'
+        flexDirection:'column',
+        margin:'auto',
+        marginTop: '5vh'
     },
     edit_container:{
         backgroundColor:'white',
         boxShadow:'0 0 2vh #e6e6e6',
-        width:'60%',
+        width:'65%',
         margin:'5vh auto',
         marginTop:'10vh',
-        height:'50%'
+        height:'60%'
     },
     input_container:{
         display:'flex',
