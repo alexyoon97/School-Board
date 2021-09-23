@@ -30,7 +30,7 @@ const SchoolForm = (props) => {
       setTimeout(() => {
         setAlert(false);
       }, 3000);
-      return;
+      e.target.value = null
     }
     else{
       setImage(rawFile);
