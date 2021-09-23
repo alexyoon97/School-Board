@@ -51,10 +51,10 @@ const CreateSchool = () => {
 
   const handleSubmit = (e) => {
     if (
-      name === "" ||
-      about === "" ||
-      location === "" ||
-      admission === "" ||
+      name === "" &&
+      about === "" &&
+      location === "" &&
+      admission === "" &&
       imageKey === ""
     ) {
       e.preventDefault();
